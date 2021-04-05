@@ -13,7 +13,7 @@ def affine(x, weight, bias):
 
 def reparameterize(mu, rho):
     epsilon = torch.randn_like(mu)
-    sigma = torch.log(1 + torch.exp(rho))
+    sigma = F.softplus(1 + torch.exp(rho))
     ret = sigma * epsilon + mu
     return ret
 
