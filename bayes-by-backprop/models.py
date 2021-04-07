@@ -42,7 +42,7 @@ class Gaussian(object):
 
     @property
     def sigma(self):
-        return torch.log(torch.exp(self.rho))
+        return torch.log(1+torch.exp(self.rho))
 
     def sample(self):
         return self.mu + torch.randn_like(self.mu) * self.sigma
